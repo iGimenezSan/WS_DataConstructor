@@ -18,13 +18,13 @@ public class Procesadores {
     public ProductoParaImportar procesarRegistro(ProductosGlobal registro) {
         ProductoParaImportar registroProcesado = null;
 
-        registroProcesado.setProductID("confirmar");
+        registroProcesado.setProductID("ProductID");
         registroProcesado.setModel(procesarCampoModel(registro.getCodigo()));
         registroProcesado.setName(procesarCampoName(registro.getNombre()));
         registroProcesado.setInOutStock(procesarCampoInOutStock(registro.getStock()));
-        registroProcesado.setURL("confirmar");
+        registroProcesado.setURL("URL");
         registroProcesado.setProductPrice(procesarCampoProductPrice(registro.getPrecio()));
-        registroProcesado.setQuantity("confirmar");
+        registroProcesado.setQuantity(null);
         registroProcesado.setCreationDate(procesarCampoCreationDate());
         registroProcesado.setLastModification(procesarCampoLastModification());
         registroProcesado.setDateAvailable(procesarCampoDateAvailable());

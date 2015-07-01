@@ -25,11 +25,18 @@ public class WS_DataConstructor {
         
         //Lectura del Fichero inicial y creación de la lista correspondiente.
         ArrayList<ProductosGlobal> listaProductos = ARCH.leerProductosGlobal(PARAM.getRutaLocal_Global());
+        ArrayList<ProductoParaImportar> listaProcesada = null;
         
         //
         for (int contador = 0; contador <= listaProductos.size()-1; contador++) {
+            // Proceso de registro y creación de registro preparado para importar
             ProductosGlobal registro = listaProductos.get(contador);
             ProductoParaImportar registroProcesado = PROC.procesarRegistro(registro);
+            
+            // Adicion del registro preparado al ArrayList de salida
+            listaProcesada.add(registroProcesado);
+                   
+            
         }
         
     }
