@@ -4,7 +4,7 @@ package Objects;
  *
  * @author iGimenezSan
  */
-public class ProductosGlobal {
+public class ProductoProveedor {
 
     // Inicialización de las variables para el fichero global de productos
     private String familia;
@@ -25,6 +25,7 @@ public class ProductosGlobal {
     private String imagen_gr;
     private String imagen_bu;
     private String imagen_or;
+    private String imagen_grande_0;
     private String imagen_grande_1;
     private String imagen_grande_2;
     private String imagen_grande_3;
@@ -34,7 +35,6 @@ public class ProductosGlobal {
     private String imagen_grande_7;
     private String imagen_grande_8;
     private String imagen_grande_9;
-    private String imagen_grande_10;
     private String ean;
     private String asociado_talla;
     private String descripcion_html;
@@ -44,7 +44,7 @@ public class ProductosGlobal {
     private String tarifa_premium;
     private String hashtalla;    
 
-    public ProductosGlobal(String familia, String subfamilia, String codigo, String nombre, String nombre_original, String marca, String descripcion_castellano, String link, String precio, String precio_tarifa, String stock, String stock_disponible, String reponer, String talla, String iva, String imagen_gr, String imagen_bu, String imagen_or, String imagen_grande_1, String imagen_grande_2, String imagen_grande_3, String imagen_grande_4, String imagen_grande_5, String imagen_grande_6, String imagen_grande_7, String imagen_grande_8, String imagen_grande_9, String imagen_grande_10, String ean, String asociado_talla, String descripcion_html, String tarifa_basica, String tarifa_preferente, String tarifa_profesional, String tarifa_premium, String hashtalla) {
+    public ProductoProveedor(String familia, String subfamilia, String codigo, String nombre, String nombre_original, String marca, String descripcion_castellano, String link, String precio, String precio_tarifa, String stock, String stock_disponible, String reponer, String talla, String iva, String imagen_gr, String imagen_bu, String imagen_or, String imagen_grande_0, String imagen_grande_1, String imagen_grande_2, String imagen_grande_3, String imagen_grande_4, String imagen_grande_5, String imagen_grande_6, String imagen_grande_7, String imagen_grande_8, String imagen_grande_9, String ean, String asociado_talla, String descripcion_html, String tarifa_basica, String tarifa_preferente, String tarifa_profesional, String tarifa_premium, String hashtalla) {
         this.familia = familia;
         this.subfamilia = subfamilia;
         this.codigo = codigo;
@@ -63,6 +63,7 @@ public class ProductosGlobal {
         this.imagen_gr = imagen_gr;
         this.imagen_bu = imagen_bu;
         this.imagen_or = imagen_or;
+        this.imagen_grande_0 = imagen_grande_0;
         this.imagen_grande_1 = imagen_grande_1;
         this.imagen_grande_2 = imagen_grande_2;
         this.imagen_grande_3 = imagen_grande_3;
@@ -72,7 +73,6 @@ public class ProductosGlobal {
         this.imagen_grande_7 = imagen_grande_7;
         this.imagen_grande_8 = imagen_grande_8;
         this.imagen_grande_9 = imagen_grande_9;
-        this.imagen_grande_10 = imagen_grande_10;
         this.ean = ean;
         this.asociado_talla = asociado_talla;
         this.descripcion_html = descripcion_html;
@@ -227,6 +227,14 @@ public class ProductosGlobal {
         this.imagen_or = imagen_or;
     }
 
+    public String getImagen_grande_0() {
+        return imagen_grande_0;
+    }
+
+    public void setImagen_grande_0(String imagen_grande_0) {
+        this.imagen_grande_0 = imagen_grande_0;
+    }
+
     public String getImagen_grande_1() {
         return imagen_grande_1;
     }
@@ -297,14 +305,6 @@ public class ProductosGlobal {
 
     public void setImagen_grande_9(String imagen_grande_9) {
         this.imagen_grande_9 = imagen_grande_9;
-    }
-
-    public String getImagen_grande_10() {
-        return imagen_grande_10;
-    }
-
-    public void setImagen_grande_10(String imagen_grande_10) {
-        this.imagen_grande_10 = imagen_grande_10;
     }
 
     public String getEan() {

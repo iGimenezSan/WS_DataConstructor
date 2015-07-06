@@ -8,6 +8,7 @@ package toolbox;
 import Objects.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Random;
 
 /**
  *
@@ -15,8 +16,8 @@ import java.util.Date;
  */
 public class Procesadores {
 
-    public ProductoParaImportar procesarRegistro(ProductosGlobal registro) {
-        ProductoParaImportar registroProcesado = null;
+    public ProductoPreparado procesarRegistro(ProductoProveedor registro) {
+        ProductoPreparado registroProcesado = new ProductoPreparado(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
 
         registroProcesado.setProductID("ProductID");
         registroProcesado.setModel(procesarCampoModel(registro.getCodigo()));
@@ -31,7 +32,7 @@ public class Procesadores {
         registroProcesado.setManufacturerName(procesarCampoManufacturerName(registro.getMarca()));
         registroProcesado.setCategoriesName(procesarCampoCategoriesName(registro.getFamilia(), registro.getSubfamilia()));
         registroProcesado.setDescription(procesarCampoDescription(registro.getDescripcion_html()));
-        registroProcesado.setProductImage(procesarCampoProductImage(registro.getNombre(), registro.getFamilia(), registro.getSubfamilia()));
+        registroProcesado.setProductImage(procesarCampoProductImage(registro.getCodigo(), registro.getNombre(), registro.getFamilia(), registro.getSubfamilia()));
         registroProcesado.setCategoriesImage(procesarCampoCategoriesImage(registro.getFamilia(), registro.getSubfamilia()));
         registroProcesado.setSpecialProductPrice(null);
         registroProcesado.setDateSpecialPriceCreated(null);
@@ -56,9 +57,59 @@ public class Procesadores {
         registroProcesado.setAttribute1Prefix(null);
         registroProcesado.setAttribute1Price(null);
         
-        
         return registroProcesado;
     }
+    
+    public String prepararRutaFolderImagenPrincipal(ProductoProveedor registro, String rutaBase) {
+        String retorno, familia, subfamilia;
+
+        // Procesar Directorio y crearlo
+        retorno = rutaBase + registro.getFamilia() + "/" + registro.getSubfamilia() + "/";
+        
+        retorno = limpiarSimbolosEnRutaFolder(retorno);
+        
+        return retorno;
+    }
+    
+    public String prepararRutaCompletaImagenPrincipal(String rutaDirectorio, String codigo, String nombre) {
+        String retorno;
+        
+        nombre = quitarEspacios(nombre);
+        nombre = textoAMinusculas(nombre);
+        nombre = limpiarSimbolosEnRuta(nombre);
+        
+        retorno = rutaDirectorio + codigo + "_" + nombre + ".jpg";
+        
+        return retorno;
+    }    
+    
+    public ImagenesProveedor prepararImagenesRAW(ProductoProveedor registro) {
+        ImagenesProveedor retorno = new ImagenesProveedor(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+
+        retorno.setCodigo(registro.getCodigo());
+        retorno.setNombre(registro.getNombre());
+        retorno.setFamilia(registro.getFamilia());
+        retorno.setSubfamilia(registro.getSubfamilia());
+        retorno.setImagen_gr(registro.getImagen_gr());
+        retorno.setImagen_bu(registro.getImagen_bu());
+        retorno.setImagen_or(registro.getImagen_or());
+        retorno.setImagen_grande_0(registro.getImagen_grande_0());
+        retorno.setImagen_grande_1(registro.getImagen_grande_1());
+        retorno.setImagen_grande_2(registro.getImagen_grande_2());
+        retorno.setImagen_grande_3(registro.getImagen_grande_3());
+        retorno.setImagen_grande_4(registro.getImagen_grande_4());
+        retorno.setImagen_grande_5(registro.getImagen_grande_5());
+        retorno.setImagen_grande_6(registro.getImagen_grande_6());
+        retorno.setImagen_grande_7(registro.getImagen_grande_7());
+        retorno.setImagen_grande_8(registro.getImagen_grande_8());
+        retorno.setImagen_grande_9(registro.getImagen_grande_9());
+
+        return retorno;
+    }
+    
+    //////////////////
+    // Procesadores //
+    //////////////////
 
     private String procesarCampoModel (String codigo) {
         String retorno = codigo;
@@ -123,14 +174,14 @@ public class Procesadores {
         return retorno;        
     }
 
-    private String procesarCampoProductImage(String nombre, String familia, String subfamilia) {
+    private String procesarCampoProductImage(String codigo, String nombre, String familia, String subfamilia) {
         String rutaBase = "productos/";
         String extension = ".jpg";
         
         nombre = textoAMinusculas(nombre);
         nombre = quitarEspacios(nombre);
         
-        String retorno = rutaBase + familia + "/" + subfamilia + "/" + nombre + extension;
+        String retorno = rutaBase + familia + "/" + subfamilia + "/" + codigo + "_" + nombre + extension;
         
         return retorno;
     }
@@ -179,10 +230,25 @@ public class Procesadores {
     }
 
     private String procesarCampoProductsViewed() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String retorno;
+        int valor;
+        
+        //Instanciación de java.Util.Random
+        Random r = new Random();
+        
+        valor = r.nextInt(30);
+        retorno = Integer.toString(valor);
+        
+        return retorno;
     }    
     
-    
+    private String procesarNombreFicheroImagenPrincipal(String codigo, String nombre) {
+        String retorno;
+        
+        retorno = codigo + "_" + nombre + ".jpg";
+        
+        return retorno;
+    }    
     
     ///////////////////
     //  USO GENERAL  //
@@ -209,10 +275,26 @@ public class Procesadores {
         return retorno;
     }
 
+    private String limpiarSimbolosEnRuta(String texto) {
+        String retorno = texto;
+        
+        retorno = retorno.replaceAll("/", "-");
+        retorno = retorno.replace("?", "");
+        retorno = retorno.replaceAll("¿", "");
+//        retorno = retorno.replaceAll("*", "·");
+        
+        return retorno;
+    }
 
-
-
-
+    private String limpiarSimbolosEnRutaFolder(String texto) {
+        String retorno = texto;
+        
+        retorno = retorno.replace("?", "");
+        retorno = retorno.replaceAll("¿", "");
+//        retorno = retorno.replaceAll("*", "·");
+        
+        return retorno;
+    }
 
 
 

@@ -4,7 +4,7 @@ package Objects;
  *
  * @author iGimenezSan
  */
-public class ProductoParaImportar {
+public class ProductoPreparado {
 
         String ProductID;
         String Model;
@@ -44,7 +44,7 @@ public class ProductoParaImportar {
         String Attribute1Prefix;
         String Attribute1Price;
 
-    public ProductoParaImportar(String ProductID, String Model, String Name, String InOutStock, String URL, String ProductPrice, String Quantity, String CreationDate, String LastModification, String DateAvailable, String ManufacturerName, String CategoriesName, String Description, String ProductImage, String CategoriesImage, String SpecialProductPrice, String DateSpecialPriceCreated, String SpecialLastModified, String SpecialExpires, String SpecialChanged, String SpecialStatus, String ProductAttributes, String TaxClassName, String ProductsOrdered, String ProductsViewed, String ManufacturersImage, String FeatureDateAdded, String FeaturedLastModified, String FeaturedExpiresDate, String FeaturedDateStatusChange, String FeaturedStatus, String Weight, String Products_Images, String Attribute1Option, String Attribute1Value, String Attribute1Prefix, String Attribute1Price) {
+    public ProductoPreparado(String ProductID, String Model, String Name, String InOutStock, String URL, String ProductPrice, String Quantity, String CreationDate, String LastModification, String DateAvailable, String ManufacturerName, String CategoriesName, String Description, String ProductImage, String CategoriesImage, String SpecialProductPrice, String DateSpecialPriceCreated, String SpecialLastModified, String SpecialExpires, String SpecialChanged, String SpecialStatus, String ProductAttributes, String TaxClassName, String ProductsOrdered, String ProductsViewed, String ManufacturersImage, String FeatureDateAdded, String FeaturedLastModified, String FeaturedExpiresDate, String FeaturedDateStatusChange, String FeaturedStatus, String Weight, String Products_Images, String Attribute1Option, String Attribute1Value, String Attribute1Prefix, String Attribute1Price) {
         this.ProductID = ProductID;
         this.Model = Model;
         this.Name = Name;
